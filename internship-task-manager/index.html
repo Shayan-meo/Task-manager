@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Internship Task Manager - organize deadlines, priorities, and progress for your internship.">
+  <title>Internship Task Manager</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <div class="nav-brand">
+        <a href="#" aria-label="Internship Task Manager home">TaskFlow</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-menu" id="primaryNav">
+        <ul class="nav-links">
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#tasks">Tasks</a></li>
+          <li><a href="#progress">Progress</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#add-task" class="btn btn-primary nav-add-task">Add Task</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <span class="hero-label">Internship Workspace</span>
+        <h1 id="hero-heading">Organize Your Internship Tasks</h1>
+        <p>Manage deadlines, prioritize work, and track your daily progress in one clean and accessible dashboard built for interns.</p>
+        <div class="hero-actions">
+          <a href="#tasks" class="btn btn-primary">View Tasks</a>
+          <a href="#add-task" class="btn btn-secondary">Add New Task</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <div class="hero-card-row">
+            <span class="hero-dot"></span>
+            <div class="hero-line hero-line-1"></div>
+          </div>
+          <div class="hero-card-row">
+            <span class="hero-dot hero-dot-2"></span>
+            <div class="hero-line hero-line-2"></div>
+          </div>
+          <div class="hero-card-row">
+            <span class="hero-dot hero-dot-3"></span>
+            <div class="hero-line hero-line-3"></div>
+          </div>
+          <div class="hero-progress">
+            <div class="hero-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard" id="dashboard" aria-labelledby="dashboard-heading">
+      <h2 id="dashboard-heading" class="section-title">Dashboard Statistics</h2>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          </div>
+          <div class="stat-number" id="statTotal" data-testid="stat-total">0</div>
+          <div class="stat-label">Total Tasks</div>
+          <p class="stat-text">All tasks in your workspace</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="stat-number" id="statCompleted" data-testid="stat-completed">0</div>
+          <div class="stat-label">Completed Tasks</div>
+          <p class="stat-text">Tasks finished successfully</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="stat-number" id="statPending" data-testid="stat-pending">0</div>
+          <div class="stat-label">Pending Tasks</div>
+          <p class="stat-text">Tasks still waiting to be done</p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <div class="stat-number" id="statHigh" data-testid="stat-high">0</div>
+          <div class="stat-label">High Priority Tasks</div>
+          <p class="stat-text">Tasks needing urgent attention</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="filters" id="tasks" aria-labelledby="tasks-heading">
+      <div class="section-header">
+        <h2 id="tasks-heading" class="section-title">Your Tasks</h2>
+      </div>
+      <div class="filter-controls" role="group" aria-label="Filter tasks by status">
+        <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Tasks</button>
+        <button class="filter-btn" type="button" data-filter="pending" aria-pressed="false">Pending</button>
+        <button class="filter-btn" type="button" data-filter="in progress" aria-pressed="false">In Progress</button>
+        <button class="filter-btn" type="button" data-filter="completed" aria-pressed="false">Completed</button>
+        <button class="filter-btn" type="button" data-filter="high" aria-pressed="false">High Priority</button>
+      </div>
+
+      <div class="tasks-grid" id="tasksGrid" aria-live="polite" aria-atomic="false">
+      </div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <p>No tasks match the selected filter.</p>
+        <a href="#add-task" class="btn btn-primary">Add a New Task</a>
+      </div>
+    </section>
+
+    <section class="progress-section" id="progress" aria-labelledby="progress-heading">
+      <div class="progress-card">
+        <h2 id="progress-heading" class="section-title">Overall Internship Progress</h2>
+        <div class="progress-summary">
+          <div class="progress-percentage" id="progressPercentage" aria-live="polite">0%</div>
+          <p class="progress-count" id="progressCount">0 of 0 tasks completed</p>
+          <p class="progress-message" id="progressMessage">Start completing tasks to see your progress grow.</p>
+        </div>
+        <div class="progress-bar-large" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Overall completion" id="progressBarLarge">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="weekly-summary">
+          <h3>Weekly Progress Summary</h3>
+          <p>You have completed <strong id="weeklyCompleted">0</strong> tasks this week. Keep the momentum going and focus on high priority items first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="add-task" id="add-task" aria-labelledby="add-task-heading">
+      <div class="form-card">
+        <h2 id="add-task-heading" class="section-title">Add New Task</h2>
+
+        <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+
+        <form id="addTaskForm" novalidate>
+          <div class="form-group">
+            <label for="taskTitle">Task Title <span aria-label="required">*</span></label>
+            <input type="text" id="taskTitle" name="taskTitle" required maxlength="80" placeholder="e.g. Build Responsive Landing Page">
+          </div>
+
+          <div class="form-group">
+            <label for="taskDescription">Task Description <span aria-label="required">*</span></label>
+            <textarea id="taskDescription" name="taskDescription" required rows="3" maxlength="200" placeholder="Short description of the task"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="taskCategory">Category <span aria-label="required">*</span></label>
+              <select id="taskCategory" name="taskCategory" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Testing">Testing</option>
+                <option value="Documentation">Documentation</option>
+                <option value="Reporting">Reporting</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="taskDueDate">Due Date <span aria-label="required">*</span></label>
+              <input type="date" id="taskDueDate" name="taskDueDate" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="taskPriority">Priority <span aria-label="required">*</span></label>
+              <select id="taskPriority" name="taskPriority" required>
+                <option value="" disabled selected>Select priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="taskStatus">Status <span aria-label="required">*</span></label>
+              <select id="taskStatus" name="taskStatus" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Task</button>
+            <button type="reset" class="btn btn-secondary">Reset Form</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="tips" id="tips" aria-labelledby="tips-heading">
+      <h2 id="tips-heading" class="section-title">Helpful Internship Tips</h2>
+      <div class="tips-grid">
+        <article class="tip-card">
+          <h3>Break large tasks into smaller steps</h3>
+          <p>Split big assignments into manageable pieces so you can make steady progress and avoid last-minute stress.</p>
+        </article>
+        <article class="tip-card">
+          <h3>Track your deadlines</h3>
+          <p>Keep due dates visible and review them regularly to stay on top of priorities and avoid surprises.</p>
+        </article>
+        <article class="tip-card">
+          <h3>Write clean documentation</h3>
+          <p>Good notes help your team and your future self. Summarize decisions, setups, and code changes clearly.</p>
+        </article>
+        <article class="tip-card">
+          <h3>Test your website on multiple devices</h3>
+          <p>Check your work on mobile, tablet, and desktop to ensure a consistent experience for every user.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>TaskFlow</h2>
+        <p>A lightweight internship task dashboard built with semantic HTML, CSS Grid, and Vanilla JavaScript.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#tasks">Tasks</a></li>
+          <li><a href="#progress">Progress</a></li>
+          <li><a href="#tips">Tips</a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <p>Contact: <a href="mailto:hello@taskflow.dev">hello@taskflow.dev</a></p>
+        <p class="build-note">Built with HTML, CSS and JavaScript</p>
+        <p class="copyright">&copy; 2026 TaskFlow. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
